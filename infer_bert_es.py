@@ -5,17 +5,26 @@ from tqdm import tqdm, trange
 import numpy as np
 import torch
 from torch.utils.data import TensorDataset, DataLoader, SequentialSampler
-
+from utils import init_logger, load_tokenizer, get_intent_labels, get_slot_labels, MODEL_CLASSES
 
 logger = logging.getLogger(__name__)
 
-def init_logger():
-    logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s -   %(message)s',
-                        datefmt='%m/%d/%Y %H:%M:%S',
-                        level=logging.INFO)
+def get_args(pred_config):
+    return torch.load(os.path.join(pred_config.model_dir, 'training_args.bin'))
+
                         
 def get_device(pred_config):
     return "cuda" if torch.cuda.is_available() and not pred_config.no_cuda else "cpu"
+
+def read_input_file(pred_config):
+    lines = []
+    with open(pred_config.input_file, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            words = line.split()
+            lines.append(words)
+
+    return lines
 
 def load_model(pred_config, args, device):
     # Check whether model exists

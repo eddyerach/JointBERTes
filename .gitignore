@@ -1,0 +1,6 @@
+__pycache__/
+atis_model/
+data/
+model/
+smartia_model/
+venv/

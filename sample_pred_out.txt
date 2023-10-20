@@ -1,0 +1,2 @@
+<atis_flight> -> On [April:B-depart_date.month_name] [first:B-depart_date.day_number] I need a flight going from [Phoenix:B-fromloc.city_name] to [San:B-toloc.city_name] [Diego:I-toloc.city_name]
+<atis_flight> -> I would like a flight from [Orlando:B-fromloc.city_name] to [Salt:B-toloc.city_name] [Lake:I-toloc.city_name] [City:I-toloc.city_name] for [April:B-depart_date.month_name] [First:B-depart_date.day_number] on [Delta:B-airline_name] [airlines:I-airline_name]
