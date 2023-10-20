@@ -226,9 +226,13 @@ class Trainer(object):
     def load_model(self):
         # Check whether model exists
         if not os.path.exists(self.args.model_dir):
-            raise Exception("Model doesn't exists! Train first!")
+            print(f'self.args.model_dir: {self.args.model_dir}')
+            raise Exception("Model doesn't exists! Train first!. Path: ")
 
         try:
+            print(f'************************************')
+            print(f'Instnaciando modelo: {self.args.model_dir}')
+            print(f'************************************')
             self.model = self.model_class.from_pretrained(self.args.model_dir,
                                                           args=self.args,
                                                           intent_label_lst=self.intent_label_lst,
